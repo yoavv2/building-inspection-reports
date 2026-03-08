@@ -2,8 +2,44 @@
   "name": "building-inspection-reports",
   "version": "1.0.0",
   "private": true,
-  "type": "commonjs",
+  "main": "expo-router/entry",
   "scripts": {
-    "test": "node --test"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test": "node --test test/repositories.test.js",
+    "lint": "eslint . --ext .ts,.tsx,.js"
+  },
+  "description": "Building inspection report app — Hebrew-first, offline-first",
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:38023/git/yoavv2/building-inspection-reports"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@expo/vector-icons": "^15.1.1",
+    "@react-native-async-storage/async-storage": "^3.0.1",
+    "docx": "^9.6.0",
+    "expo": "~52.0.0",
+    "expo-file-system": "^55.0.10",
+    "expo-font": "^55.0.4",
+    "expo-image-picker": "^55.0.11",
+    "expo-router": "^55.0.4",
+    "expo-sharing": "^55.0.11",
+    "expo-sqlite": "^55.0.10",
+    "expo-status-bar": "^55.0.4",
+    "react": "^18.3.1",
+    "react-hook-form": "^7.71.2",
+    "react-native": "^0.76.5",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-native": "^0.72.8",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,0 +1,4 @@
+node_modules/
+*.lock
+.expo/
+dist/
