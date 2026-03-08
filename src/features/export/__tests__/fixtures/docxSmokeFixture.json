@@ -1,0 +1,29 @@
+{
+  "id": "project-1",
+  "name": "דו\"ח בדיקה שנתי",
+  "clientName": "לקוח 77",
+  "inspectionDate": "2026-01-20",
+  "areas": [
+    {
+      "id": "area-1",
+      "title": "חזית",
+      "summary": "בדיקה תקינה",
+      "findings": [
+        {
+          "id": "finding-1",
+          "title": "סדק בקיר חיצוני",
+          "description": "נמצא סדק ברוחב 2 מ\"מ באזור הכניסה.",
+          "conclusion": "נדרש תיקון תוך 30 יום",
+          "estimatedCost": "1200",
+          "images": [
+            {
+              "id": "img-1",
+              "path": "fixtures/images/front-crack.jpg",
+              "caption": "תמונה 1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
