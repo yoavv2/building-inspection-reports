@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "building-inspection-reports",
+    "slug": "building-inspection-reports",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false
+    }
+  }
+}
