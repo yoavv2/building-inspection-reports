@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
-  ViewStyle,
-  TextStyle,
-} from 'react-native';
+import { ActivityIndicator, type TextStyle, type ViewStyle } from 'react-native';
 import { Colors } from '../../constants/colors';
+import { cn } from '../../lib/utils/cn';
+import { Text, TouchableOpacity } from '../../tw';
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
@@ -39,20 +34,26 @@ export function Button({
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled || loading}
-      style={[
-        styles.base,
-        styles[`variant_${variant}`],
-        styles[`size_${size}`],
-        fullWidth && styles.fullWidth,
-        (disabled || loading) && styles.disabled,
-        style,
-      ]}
+      className={cn(
+        'items-center justify-center rounded-xl',
+        sizeClasses[size],
+        variantClasses[variant],
+        fullWidth && 'w-full',
+        (disabled || loading) && 'opacity-50',
+      )}
+      style={style}
       activeOpacity={0.75}
     >
       {loading ? (
-        <ActivityIndicator color={variant === 'primary' ? '#fff' : Colors.primary} size="small" />
+        <ActivityIndicator
+          color={variant === 'primary' || variant === 'danger' ? Colors.textInverse : Colors.primary}
+          size="small"
+        />
       ) : (
-        <Text style={[styles.label, styles[`label_${variant}`], styles[`labelSize_${size}`], textStyle]}>
+        <Text
+          className={cn('text-center font-semibold', labelClasses[variant], labelSizeClasses[size])}
+          style={textStyle}
+        >
           {label}
         </Text>
       )}
@@ -60,36 +61,28 @@ export function Button({
   );
 }
 
-const styles = StyleSheet.create({
-  base: {
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  fullWidth: { width: '100%' },
-  disabled: { opacity: 0.5 },
+const variantClasses: Record<Variant, string> = {
+  primary: 'bg-brand-primary',
+  secondary: 'border border-brand-primary bg-surface',
+  danger: 'bg-danger',
+  ghost: 'bg-transparent',
+};
 
-  // Variants
-  variant_primary: { backgroundColor: Colors.primary },
-  variant_secondary: { backgroundColor: Colors.surface, borderWidth: 1.5, borderColor: Colors.primary },
-  variant_danger: { backgroundColor: Colors.error },
-  variant_ghost: { backgroundColor: 'transparent' },
+const sizeClasses: Record<Size, string> = {
+  sm: 'px-3.5 py-2',
+  md: 'px-5 py-3',
+  lg: 'px-7 py-4 rounded-2xl',
+};
 
-  // Sizes
-  size_sm: { paddingHorizontal: 14, paddingVertical: 8 },
-  size_md: { paddingHorizontal: 20, paddingVertical: 12 },
-  size_lg: { paddingHorizontal: 28, paddingVertical: 16 },
+const labelClasses: Record<Variant, string> = {
+  primary: 'text-ink-inverse',
+  secondary: 'text-brand-primary',
+  danger: 'text-ink-inverse',
+  ghost: 'text-brand-primary',
+};
 
-  // Label styles
-  label: { fontWeight: '600', textAlign: 'center' },
-  label_primary: { color: Colors.textInverse },
-  label_secondary: { color: Colors.primary },
-  label_danger: { color: Colors.textInverse },
-  label_ghost: { color: Colors.primary },
-
-  // Label sizes
-  labelSize_sm: { fontSize: 13 },
-  labelSize_md: { fontSize: 15 },
-  labelSize_lg: { fontSize: 17 },
-});
+const labelSizeClasses: Record<Size, string> = {
+  sm: 'text-[13px]',
+  md: 'text-[15px]',
+  lg: 'text-[17px]',
+};

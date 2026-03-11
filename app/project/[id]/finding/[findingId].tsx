@@ -18,7 +18,7 @@ import {
 import { router, useLocalSearchParams } from 'expo-router';
 import { useForm, Controller } from 'react-hook-form';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { useProjectsStore } from '../../../../src/store/projectsStore';
 import { Finding, FindingImage, Severity } from '../../../../src/types/domain';
 import { Colors } from '../../../../src/constants/colors';

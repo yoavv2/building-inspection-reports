@@ -7,7 +7,7 @@
  * The DOCX is built using the `docx` npm library running on-device.
  * All steps work fully offline.
  */
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
 import { assembleReport } from '../../services/reportAssembler';
 import { buildDocxBuffer } from './docxBuilder';

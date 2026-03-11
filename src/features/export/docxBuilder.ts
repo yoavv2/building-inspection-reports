@@ -25,7 +25,7 @@ import {
   WidthType,
   PageOrientation,
 } from 'docx';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { AssembledReport, FindingWithImages } from '../../types/domain';
 
 // ─────────────────────────────────────────────

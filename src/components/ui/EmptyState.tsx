@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Colors } from '../../constants/colors';
+import { Text, View } from '../../tw';
 
 interface EmptyStateProps {
   title: string;
@@ -10,33 +9,10 @@ interface EmptyStateProps {
 
 export function EmptyState({ title, hint, icon = '📋' }: EmptyStateProps) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.icon}>{icon}</Text>
-      <Text style={styles.title}>{title}</Text>
-      {hint && <Text style={styles.hint}>{hint}</Text>}
+    <View className="flex-1 items-center justify-center gap-3 px-8">
+      <Text className="text-5xl">{icon}</Text>
+      <Text className="text-center text-lg font-semibold text-ink-secondary">{title}</Text>
+      {hint && <Text className="text-center text-sm leading-5 text-ink-muted">{hint}</Text>}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 32,
-    gap: 12,
-  },
-  icon: { fontSize: 48 },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: Colors.textSecondary,
-    textAlign: 'center',
-  },
-  hint: {
-    fontSize: 14,
-    color: Colors.textMuted,
-    textAlign: 'center',
-    lineHeight: 20,
-  },
-});
