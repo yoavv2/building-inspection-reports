@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ReportAssemblerService, AssembledProjectReport } from '../services/reportAssembler';
+import { ReportAssemblerService } from '../services/reportAssembler';
+import type { AssembledProjectReport } from '../services/reportAssembler';
 
 interface ReportPreviewScreenProps {
   projectId: string;

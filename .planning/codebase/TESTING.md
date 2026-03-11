@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | `node --test test/repositories.test.js` | Legacy in-memory repository CRUD and seeds | Passes |
 | `node --test src/features/export/__tests__/docxSmoke.test.mjs` | Export fixture smoke test with Hebrew text and image path preservation | Passes |
-| `./node_modules/.bin/tsc --noEmit` | TypeScript compile health | Fails |
+| `./node_modules/.bin/tsc --noEmit` | TypeScript compile health | Passes |
 
 ## Current Test Strategy
 
@@ -32,16 +32,15 @@
 - Report preview rendering in the active route tree
 - Settings integration beyond basic repository writes
 
-## Current Type-Check Failures
+## Current Type-Check Status
 
-The verified `tsc` run fails in a few important areas:
+The previously verified `tsc` blockers from phase `01-01` are now resolved:
 
-- `TextField.tsx` uses a `writingDirection` prop directly on `TextInput`, which does not match the installed RN typings
-- `docxBuilder.ts` returns a `Buffer` where the signature declares `ArrayBuffer`
-- Legacy export modules import `AssembledProjectReport` from `services/reportAssembler`, but that type is not exported by the current TS entrypoint
-- Several legacy-oriented TS files still rely on implicit `any`
+- `TextField.tsx` now applies RTL direction through styles compatible with the installed React Native typings
+- `docxBuilder.ts` now advertises the `Uint8Array` contract it actually returns
+- Legacy export compatibility modules can import `AssembledProjectReport` through the report assembler TS entrypoint again
 
 ## Confidence Assessment
 
 - Confidence is reasonable for the legacy JS repository behavior because that path is tested.
-- Confidence is low for the active mobile runtime because the TypeScript app path is only lightly verified and does not currently type-check.
+- Confidence is still low for the active mobile runtime because the TypeScript app path is only lightly verified even though it now type-checks.

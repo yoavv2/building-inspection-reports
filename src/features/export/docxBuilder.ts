@@ -242,7 +242,7 @@ async function buildFindingSection(finding: FindingWithImages, index: number): P
 // Main builder
 // ─────────────────────────────────────────────
 
-export async function buildDocxBuffer(report: AssembledReport): Promise<ArrayBuffer> {
+export async function buildDocxBuffer(report: AssembledReport): Promise<Uint8Array> {
   const { project, areas, settings } = report;
   const sections: Paragraph[] = [];
 

@@ -46,3 +46,4 @@ export async function assembleReport(projectId: string): Promise<AssembledReport
 
 // Legacy compatibility exports
 export { ReportAssemblerService } from './legacyService';
+export type { AssembledProjectReport } from './legacyService';

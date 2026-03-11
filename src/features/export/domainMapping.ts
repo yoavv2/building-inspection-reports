@@ -1,4 +1,4 @@
-import { AssembledProjectReport } from '../../services/reportAssembler';
+import type { AssembledProjectReport } from '../../services/reportAssembler';
 import { DomainExportProject } from './types';
 
 export const mapAssembledReportToDomain = (

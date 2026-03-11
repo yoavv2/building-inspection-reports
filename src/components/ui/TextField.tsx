@@ -5,6 +5,8 @@ import {
   TextInput,
   StyleSheet,
   TextInputProps,
+  TextStyle,
+  StyleProp,
   ViewStyle,
 } from 'react-native';
 import { Colors } from '../../constants/colors';
@@ -23,6 +25,7 @@ export function TextField({
   hint,
   containerStyle,
   required,
+  style: inputStyle,
   ...inputProps
 }: TextFieldProps) {
   return (
@@ -34,9 +37,13 @@ export function TextField({
         </Text>
       )}
       <TextInput
-        style={[styles.input, error && styles.inputError, inputProps.multiline && styles.multiline]}
+        style={[
+          styles.input,
+          inputProps.multiline && styles.multiline,
+          inputStyle as StyleProp<TextStyle>,
+          error && styles.inputError,
+        ]}
         textAlign="right"
-        writingDirection="rtl"
         placeholderTextColor={Colors.textMuted}
         {...inputProps}
       />
@@ -65,6 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.text,
     minHeight: 48,
+    writingDirection: 'rtl',
   },
   multiline: {
     minHeight: 100,

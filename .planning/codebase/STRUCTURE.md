@@ -33,7 +33,7 @@
 | `src/store/` | Zustand store | Only one store today: `projectsStore.ts` |
 | `src/db/` | Persistence layer | Contains both active TS SQLite code and legacy JS in-memory code |
 | `src/services/reportAssembler/` | Report hydration | New TS assembler plus legacy compatibility service |
-| `src/features/export/` | Export-specific mapping and builders | Mixed active mobile path and legacy/test-oriented abstractions |
+| `src/features/export/` | Export-specific mapping and builders | Canonical mobile export lives beside legacy compatibility abstractions |
 | `src/components/ui/` | Shared UI primitives | Buttons, dialogs, inputs, badges, empty state, card |
 | `src/lib/i18n/` | Hebrew string catalog | Centralized user-facing copy |
 | `src/lib/utils/` | Small shared utilities | Currently includes module-level standard selection state |
@@ -58,8 +58,8 @@
 
 ### Export split
 
-- Active mobile export: `src/features/export/exportService.ts`, `src/features/export/docxBuilder.ts`
-- Legacy export abstraction: `src/features/export/index.ts`, `src/features/export/types.ts`, `src/features/export/adapters/*`
+- Canonical mobile export: `src/features/export/exportService.ts`, `src/features/export/docxBuilder.ts`
+- Legacy compatibility abstraction: `src/features/export/index.ts`, `src/features/export/types.ts`, `src/features/export/adapters/*`
 
 ## Structure Assessment
 

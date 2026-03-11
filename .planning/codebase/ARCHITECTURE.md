@@ -49,13 +49,14 @@ flowchart TD
 
 - `assembleReport(projectId)` hydrates the project graph from repositories
 - `app/project/[id]/preview.tsx` renders that assembled graph directly
+- The canonical mobile export path is `src/features/export/exportService.ts` + `src/features/export/docxBuilder.ts`
 - `exportReport(projectId)` converts the report into a DOCX buffer, writes it locally, then opens the OS share sheet
 
 ### 5. Legacy Node/Test Path
 
 - `src/db/initDatabase.js` builds an in-memory database and JS repositories
 - `test/repositories.test.js` exercises only that path
-- `src/features/export/index.ts` and related types still lean on legacy `AssembledProjectReport` types rather than the current mobile `AssembledReport`
+- `src/features/export/index.ts` and related types are compatibility-only and still lean on legacy `AssembledProjectReport` types rather than the current mobile `AssembledReport`
 
 ## Core Data Flows
 
@@ -71,7 +72,7 @@ flowchart TD
 1. Preview screen calls `assembleReport(projectId)`
 2. The assembler loads project, areas, findings, images, standards, and settings
 3. Preview screen renders the assembled graph
-4. Export flow calls `buildDocxBuffer(report)`
+4. Export flow calls `buildDocxBuffer(report)` via the canonical mobile export path
 5. File is saved to `FileSystem.documentDirectory` and optionally shared
 
 ## Architectural Strengths

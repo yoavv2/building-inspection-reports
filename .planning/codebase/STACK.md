@@ -32,9 +32,9 @@ This is an Expo / React Native mobile application for offline building-inspectio
 ## Tooling State
 
 - Package manager: npm, represented by `package-lock.json`
-- Type checking: `./node_modules/.bin/tsc --noEmit` currently fails
+- Type checking: `./node_modules/.bin/tsc --noEmit` currently passes
 - Tests: two verified entry points pass
-- Linting: a `lint` script exists in `package.json`, but the manifest is currently in a conflicted state
+- Linting: a `lint` script exists in `package.json` and the manifest is now valid JSON
 
 ## Codebase Shape
 
@@ -48,4 +48,4 @@ This is an Expo / React Native mobile application for offline building-inspectio
 - The repository is not a pure TypeScript app. It contains two overlapping stacks:
   - A React Native / Expo runtime backed by SQLite and TS repositories
   - A legacy Node/in-memory JS stack used by tests and some export abstractions
-- `package.json` and `package-lock.json` still contain merge-conflict markers, so the dependency/tooling layer is not in a clean state.
+- `package.json` and `package-lock.json` are back in a clean state, but the test surface still favors the legacy JS stack over the active mobile runtime.
